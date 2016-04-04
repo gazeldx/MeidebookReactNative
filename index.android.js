@@ -14,7 +14,18 @@ import React, {
   View
 } from 'react-native';
 
+import {
+  MKButton
+} from 'react-native-material-kit';
+
 var REQUEST_URL = 'https://raw.githubusercontent.com/facebook/react-native/master/docs/MoviesExample.json';
+
+const ColoredRaisedButton = MKButton.coloredButton()
+  .withText('BUTTON')
+  .withOnPress(() => {
+    console.log("Hi, it's a colored button!");
+  })
+  .build();
 
 class MeidebookReactNative extends Component {
   constructor(props) {
@@ -49,11 +60,14 @@ class MeidebookReactNative extends Component {
     }
 
     return (
-      <ListView
-        dataSource={this.state.dataSource}
-        renderRow={this.renderMovie}
-        style={styles.listView}
-      />
+      <View>
+        <ColoredRaisedButton/>
+        <ListView
+          dataSource={this.state.dataSource}
+          renderRow={this.renderMovie}
+          style={styles.listView}
+        />
+      </View>
     );
   }
 
@@ -63,6 +77,7 @@ class MeidebookReactNative extends Component {
         <Text>
           正在加载电影数据……
         </Text>
+        <ColoredRaisedButton/>
       </View>
     );
   }
